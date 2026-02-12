@@ -3,7 +3,7 @@
 [![Go Version](https://img.shields.io/badge/go-1.25.5-blue)](https://golang.org/)
 [![Gin Framework](https://img.shields.io/badge/gin-1.11.0-blue)](https://gin-gonic.com/)
 
-基于Golang和MySQL构建的RESTful用户管理系统，提供完整的用户认证和权限管理功能。
+基于Golang和MySQL构建的用户管理系统，提供完整的用户认证和权限管理功能。
 
 ## 功能特性
 
@@ -59,6 +59,11 @@ DB_PASSWORD=123456
 DB_HOST=localhost
 DB_PORT=3306
 DB_NAME=usersystem
+```
+
+安装Docker并执行
+```bash
+docker run -d -p 3306:3306 --name usersystem -e MYSQL_ROOT_PASSWORD=123456 mysql:8.0
 ```
 
 ### 启动服务
