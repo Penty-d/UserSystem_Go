@@ -99,7 +99,7 @@ usersystem_go/
 ├── repositories/      # 数据访问层
 ├── userhandler/       # 控制器
 ├── utils/             # 工具函数
-│   ├── auth.go        # JWT认证
+│   ├── auth.go        # Token认证
 │   └── password.go    # 密码加密
 ├── go.mod
 └── main.go            # 入口文件
