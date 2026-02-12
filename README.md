@@ -37,10 +37,10 @@
 ### 安装步骤
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/user-system-go.git
+git clone https://github.com/Penty-d/UserSystem_Go.git
 
 # 进入目录
-cd user-system-go
+cd UserSystem_Go
 
 # 安装依赖
 go mod download
