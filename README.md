@@ -47,10 +47,6 @@ go mod download
 ```
 
 ### 配置环境
-复制.env.example并配置数据库：
-```bash
-cp config/.env.example config/.env
-```
 
 环境变量配置示例：
 ```ini
