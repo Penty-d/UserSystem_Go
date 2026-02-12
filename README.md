@@ -35,7 +35,7 @@
 - MySQL 5.7+
 
 ### 安装步骤
-
+```bash
 # 克隆仓库
 git clone https://github.com/yourusername/user-system-go.git
 
@@ -44,25 +44,27 @@ cd user-system-go
 
 # 安装依赖
 go mod download
-
+```
 
 ### 配置环境
 复制.env.example并配置数据库：
+```bash
 cp config/.env.example config/.env
+```
 
 环境变量配置示例：
-
+```ini
 DB_USER=root
 DB_PASSWORD=123456
 DB_HOST=localhost
 DB_PORT=3306
 DB_NAME=usersystem
-
+```
 
 ### 启动服务
-
+```bash
 go run main.go
-
+```
 
 ## API文档
 
@@ -82,7 +84,7 @@ go run main.go
 **认证要求**：在Authorization Header中添加Bearer Token
 
 ## 项目结构
-
+```
 usersystem_go/
 ├── config/            # 配置管理
 ├── database/          # 数据库连接
@@ -96,6 +98,7 @@ usersystem_go/
 │   └── password.go    # 密码加密
 ├── go.mod
 └── main.go            # 入口文件
+```
 
 ## 许可证
 MIT License
