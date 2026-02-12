@@ -12,6 +12,9 @@ import (
 func main() {
 
 	ServerPort := ":8080" //默认端口
+
+	gin.SetMode(gin.ReleaseMode)
+
 	//初始化数据库连接
 	err := database.InitDB()
 	if err != nil {
@@ -31,19 +34,27 @@ func main() {
 		log.Fatalf("%v", err)
 		panic(err)
 	}
+
 	//创建Gin路由
 
-	router := gin.Default()
+	router := gin.New()
 
 	//注册用户相关的路由
 
-	router.Use(middleware.LoggerMiddleware()) //使用日志中间件
+	router.Use(middleware.RecoveryMiddleware(), middleware.LoggerMiddleware()) //使用日志与恢复中间件
 
-	router.POST("/api/register", userhandler.RegisterUser)
-	router.POST("/api/login", userhandler.LoginUser)
-	//router.POST("/api/delete", userhandler.DeleteUser) 等验证中间件写完了再开放
-	//router.POST("/api/change_password", userhandler.ChangePassword) 等验证中间件写完了再开放
-
+	public := router.Group("/api") //公开路由组
+	{
+		public.POST("/register", userhandler.RegisterUser)
+		public.POST("/login", userhandler.LoginUser)
+	}
+	private := router.Group("/api") //私有路由组
+	private.Use(middleware.AuthMiddleware())
+	{
+		private.POST("/delete", userhandler.DeleteUser)
+		private.POST("/change_password", userhandler.ChangePassword)
+		private.GET("/users", userhandler.GetUser)
+	}
 	//启动服务器
 	if err := router.Run(ServerPort); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
